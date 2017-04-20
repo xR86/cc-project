@@ -1,0 +1,7 @@
+
+# Safe files
+**/safe_*
+
+# Compiled files
+__pycache__/*
+*.pyc
