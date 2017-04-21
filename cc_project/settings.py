@@ -11,6 +11,15 @@ https://docs.djangoproject.com/en/1.11/ref/settings/
 """
 
 import os
+import json
+# from pprint import pprint
+
+with open('cc_project/config.json') as data_file:
+    config = json.load(data_file)
+    # print(config["i18n"])
+    # print(config["i18n"]["USE_I18N"])
+
+# pprint(config)
 
 # Build paths inside the project like this: os.path.join(BASE_DIR, ...)
 BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
@@ -20,10 +29,10 @@ BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 # See https://docs.djangoproject.com/en/1.11/howto/deployment/checklist/
 
 # SECURITY WARNING: keep the secret key used in production secret!
-SECRET_KEY = '9!s83!cl+b8(+euv^q4mle!a#91)xj32a%^elf#aw9%^*xi9&n'
+SECRET_KEY = config['SECRET_KEY']
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = True
+DEBUG = config['DEBUG']
 
 ALLOWED_HOSTS = []
 
@@ -37,6 +46,8 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
+    # REST pack
+    'rest_framework',
 ]
 
 MIDDLEWARE = [
@@ -54,7 +65,7 @@ ROOT_URLCONF = 'cc_project.urls'
 TEMPLATES = [
     {
         'BACKEND': 'django.template.backends.django.DjangoTemplates',
-        'DIRS': [],
+        'DIRS': [ os.path.join(BASE_DIR, 'project/templates') ],
         'APP_DIRS': True,
         'OPTIONS': {
             'context_processors': [
@@ -103,18 +114,35 @@ AUTH_PASSWORD_VALIDATORS = [
 # Internationalization
 # https://docs.djangoproject.com/en/1.11/topics/i18n/
 
-LANGUAGE_CODE = 'en-us'
+# iterate through settings, and dynamically set global vars
+for item in config['i18n']:
+    # print(item)
+    # print(config['i18n'][item])
+    #
+    # TODO: find another way of doing this in a loop ?
+    # example alternative: setattr(self, name, value) #equivalent to: self.varname= 'something'
+    if type(config['i18n'][item]) is bool:
+        # dynamic_var = item + " = " + str(config['i18n'][item])
+        # %r could also work - https://docs.python.org/2/library/functions.html#func-repr
+        dynamic_var = '%s = %s' % (item, config['i18n'][item])
+    else:
+        # dynamic_var = item + " = '" + str(config['i18n'][item]) + "'"
+        dynamic_var = "%s = '%s'" % (item, config['i18n'][item])
+    #print(dynamic_var)
 
-TIME_ZONE = 'UTC'
-
-USE_I18N = True
-
-USE_L10N = True
-
-USE_TZ = True
+    exec(dynamic_var)
 
 
 # Static files (CSS, JavaScript, Images)
 # https://docs.djangoproject.com/en/1.11/howto/static-files/
 
+# This is the url that static routes will reverse to
 STATIC_URL = '/static/'
+# '/static/', # admin dashboard static files
+# 'static/'  # project static files - breaks admin dashboard
+# >> solution: define static folders for every app in their respective urls.py
+
+# This is the place where static files actually live
+# STATIC_ROOT = 'project/static/'
+
+print('--')

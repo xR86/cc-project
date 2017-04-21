@@ -1,0 +1,11 @@
+{	
+	"SECRET_KEY": "9!s83!cl+b8(+euv^q4mle!a#91)xj32a%^elf#aw9%^*xi9&n",
+	"DEBUG": true,
+	"i18n": {
+		"LANGUAGE_CODE": "en-us",
+		"TIME_ZONE": "UTC",
+		"USE_I18N": true,
+		"USE_L10N": true,
+		"USE_TZ": true
+	}
+}
