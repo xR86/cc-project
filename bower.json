@@ -1,0 +1,17 @@
+{
+  "name": "cc-project",
+  "homepage": "https://github.com/xR86/cc-project",
+  "authors": [
+    "Dan Alexandru <dan.alexandru@info.uaic.ro>"
+  ],
+  "description": "",
+  "main": "manage.py",
+  "license": "MIT",
+  "private": true,
+  "ignore": [
+    "**/.*",
+    "bower_components",
+    "test",
+    "tests"
+  ]
+}
