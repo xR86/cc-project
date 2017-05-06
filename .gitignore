@@ -4,6 +4,7 @@
 
 # Libraries
 lib/*
+static/*
 
 # Compiled files
 __pycache__/*
