@@ -5,6 +5,7 @@
 # Libraries
 lib/*
 static/*
+cc_project/static/*
 
 # Compiled files
 __pycache__/*

@@ -144,5 +144,7 @@ STATIC_URL = '/static/'
 
 # This is the place where static files actually live
 # STATIC_ROOT = 'project/static/'
+PROJECT_DIR = os.path.dirname(os.path.abspath(__file__))
+STATIC_ROOT = os.path.join(PROJECT_DIR, 'static')
 
 print('--')
