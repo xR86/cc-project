@@ -5,5 +5,20 @@
 </head>
 <body>
 provider
+Hello, {{ name }}.
+<form name = "form" action = "{% url "test" %}" 
+         method = "POST" >{% csrf_token %}
+         
+         <div style = "max-width:470px;">
+            <center> 
+            
+               <button style = "border:0px; background-color:#4285F4; margin-top:8%;
+                  height:35px; width:80%;margin-left:19%;" type = "submit" 
+                  value = "Login" >
+                  <strong>Login</strong>
+               </button>
+               
+            </center>
+         </div>
 </body>
 </html>

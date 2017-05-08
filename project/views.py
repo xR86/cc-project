@@ -17,6 +17,12 @@ def get_register_page(request):
 def get_login_page(request):
     return render(request, 'login.html', global_vars)
 
+def test(request):
+    value = request.COOKIES['username']
+    print value
+    return render(request, 'error.html', global_vars)
+
+
 def register(request):
     username = request.POST["username"]
     passwd = request.POST["password"]
@@ -42,8 +48,10 @@ def login(request):
     user = _login.get_user(username, passwd)
     if user:
         if user["status"] == "client":
-            return render(request, 'client.html', global_vars)
+            response = render(request, 'client.html', {"name": "caca client"})
         else:
-            return render(request, 'provider.html', global_vars)
+            response = render(request, 'provider.html', {"name": "caca provider"})
+        response.set_cookie('username', username)
+        return response
     else:
-        return render(request, 'error.html', global_vars)
+        return render(request, 'error.html', {"name": "caca"})
