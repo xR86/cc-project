@@ -24,7 +24,6 @@ def test(request):
     print value
     return render(request, 'index.html', global_vars)
 
-   
 def register(request):
     username = request.POST["username"]
     passwd = request.POST["password"]
