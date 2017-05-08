@@ -37,10 +37,29 @@ def insert_db():
     # print "------------------------------"
     # print list(query.fetch())[0].key.name
 
+# def username_exists():
+
+
+
 def index(request):
     # return HttpResponse("Hello, world.")
     #insert_db()
     return render(request, 'index.html', global_vars)
 
-def register(request):
+def get_register_page(request):
     return render(request, 'register.html', global_vars)
+
+def register(request):
+    
+    username = request.POST["username"]
+    passwd = request.POST["password"]
+    vpasswd = request.POST["verify_password"]
+    status = request.POST["status"]
+    
+    # if passwd == vpasswd and not username_exists(username):
+    #     create_user(username, passwd, status)
+        
+    if status == "client":
+        return render(request, 'client.html', global_vars)
+    elif status == "provider":
+        return render(request, 'provider.html', global_vars)
