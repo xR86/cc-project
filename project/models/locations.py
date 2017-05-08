@@ -15,7 +15,7 @@ def add_location(username, data):
     task["location_address"] = location_address
     datastore_client.put(task)
 
-def get_locations():
+def get_locations_client():
     
     datastore_client = datastore.Client()
 
@@ -26,4 +26,19 @@ def get_locations():
     d = {}
     for l in locations:
         d[l.key.name] = { "address": l["location_address"], "type": l["location_type"]}
+    return d
+
+
+def get_locations_provider(username):
+    
+    datastore_client = datastore.Client()
+
+    kind = 'Location'
+    query = datastore_client.query(kind=kind)
+
+    locations = list(query.fetch())
+    d = {}
+    for l in locations:
+        if l["username"] and l["username"] == username:
+            d[l.key.name] = { "address": l["location_address"], "type": l["location_type"]}
     return d

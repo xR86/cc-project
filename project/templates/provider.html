@@ -2,8 +2,53 @@
 <html>
 <head>
 	<title></title>
+	<script src="https://ajax.aspnetcdn.com/ajax/jquery/jquery-1.9.0.js"></script>
 </head>
 <body>
+
+<script type="text/javascript" charset="utf-8" async defer>
+	function see_bookings(name) {
+		console.log(name);
+	}
+
+	function get_location_form(name, info) {
+
+		var html = '<form action="javascript:see_bookings(\'' + name + '\')"> \
+         <div class="location_name"> Location: ' + name + '</div> \
+         <div class="location_type"> Type: ' + info["type"] + ' </div> \
+         <div class="location_address"> Address:' + info["address"] +' </div> \
+         </div> \
+         <div style = "max-width:470px;"> \
+            <center> \
+               <button style = "border:0px; background-color:#4285F4; margin-top:8%;\
+                  height:35px; width:80%;margin-left:19%;" type = "submit">\
+                  <strong>SEE BOOKINGS</strong>\
+               </button>\
+            </center>\
+         </div>\
+      </form>';
+      return html;
+	}
+
+
+	function get_locations() {
+		$.ajaxSetup({
+			async: true,
+			timeout: 10000
+		});
+		$.get('/get_locations_provider', function(data) {
+			console.log(data);
+			for (var key in data) {
+				var type = data[key]["type"]
+				var address = data[key]["type"]
+				html = get_location_form(key, data[key])
+				//console.log(html);
+				$('#all_locations').append(html);
+			}
+		});
+	}
+
+</script>
 
 <form name = "form" action = "{% url "add_location" %}" method = "POST">
 {% csrf_token %}
@@ -35,6 +80,24 @@
     </div>
 
 </form>
+
+<form name = "form" action = "javascript:get_locations()" 
+         method = "POST" >{% csrf_token %}
+         
+         <div style = "max-width:470px;">
+            <center> 
+            
+               <button style = "border:0px; background-color:#4285F4; margin-top:8%;
+                  height:35px; width:80%;margin-left:19%;" type = "submit" 
+                  value = "Get my locations" >
+                  <strong>Get locations</strong>
+               </button>
+               
+            </center>
+         </div>
+</form>
+<div id="all_locations"></div>
+
 
 
 </body>

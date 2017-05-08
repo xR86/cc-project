@@ -27,10 +27,14 @@ def add_location(request):
 
     return render(request, 'client.html', global_vars)
 
-def get_locations(request):
-    locations = _locations.get_locations()
+def get_locations_client(request):
+    locations = _locations.get_locations_client()
     return JsonResponse(locations)
 
+def get_locations_provider(request):
+    username = request.COOKIES['username']
+    locations = _locations.get_locations_provider(username)
+    return JsonResponse(locations)
 
 def register(request):
     username = request.POST["username"]
