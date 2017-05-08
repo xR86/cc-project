@@ -20,6 +20,7 @@
             </center>
          </div>
 
+
          <div style = "max-width:470px;">
             <center>
                <input type = "password" style = "margin-left:20%;" 
@@ -27,10 +28,18 @@
             </center>
          </div>
 
-		<div style = "max-width:470px;">
+		<!-- <div style = "max-width:470px;">
             <center> 
                <input type = "text" style = "margin-left:20%;" 
                   placeholder = "Status" name = "status" />
+            </center>
+         </div> -->
+         <div style = "max-width:470px;">
+            <center>
+               <select name="status" onchange="this.form.update()">
+                  <option value="client">Client</option>
+                  <option value="provider">Provider</option>
+               </select>
             </center>
          </div>
 
