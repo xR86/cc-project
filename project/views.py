@@ -1,8 +1,10 @@
 from django.shortcuts import render
 from django.http import HttpResponse
+from django.http import JsonResponse
 
 from models import login as _login
 from models import register as _register
+from models import locations as _locations
 
 import datetime
 
@@ -19,10 +21,16 @@ def get_register_page(request):
 def get_login_page(request):
     return render(request, 'login.html', global_vars)
 
-def test(request):
-    value = request.COOKIES['username']
-    print value
-    return render(request, 'index.html', global_vars)
+def add_location(request):
+    username = request.COOKIES['username']
+    _locations.add_location(username, request.POST)
+
+    return render(request, 'client.html', global_vars)
+
+def get_locations(request):
+    locations = _locations.get_locations()
+    return JsonResponse(locations)
+
 
 def register(request):
     username = request.POST["username"]
@@ -45,7 +53,6 @@ def register(request):
 def login(request):
     username = request.POST["username"]
     passwd = request.POST["password"]
-    print "#######################################"
     user = _login.get_user(username, passwd)
     if user:
         if user["status"] == "client":
