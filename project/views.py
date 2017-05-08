@@ -44,11 +44,13 @@ def register(request):
         return render(request, 'error.html', global_vars)
         
     if status == "client":
-        return render(request, 'client.html', global_vars)
+        response = render(request, 'client.html', global_vars)
     elif status == "provider":
-        return render(request, 'provider.html', global_vars)
+        response = render(request, 'provider.html', global_vars)
     else:
         return render(request, 'error.html', global_vars)
+    response.set_cookie('username', username)
+    return response
 
 def login(request):
     username = request.POST["username"]
@@ -59,8 +61,6 @@ def login(request):
             response = render(request, 'client.html', global_vars)
         else:
             response = render(request, 'provider.html', global_vars)
-        max_age = 365 * 24 * 60 * 60  #one year
-        expires = datetime.datetime.strftime(datetime.datetime.utcnow() + datetime.timedelta(seconds=max_age), "%a, %d-%b-%Y %H:%M:%S GMT")
         response.set_cookie('username', username)#, max_age=max_age, expires=expires)
         print username
         return response
