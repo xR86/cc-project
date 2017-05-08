@@ -7,6 +7,31 @@
 <body>
 
 <script type="text/javascript" charset="utf-8" async defer>
+
+	function book_request(name) {
+		console.log(name);
+	}
+
+	function get_location_form(name, info) {
+
+		var html = '<form action="javascript:book_request(\'' + name + '\')"> \
+         <div class="location_name"> Location: ' + name + '</div> \
+         <div class="location_type"> Type: ' + info["type"] + ' </div> \
+         <div class="location_address"> Address:' + info["address"] +' </div> \
+         </div> \
+         <div style = "max-width:470px;"> \
+            <center> \
+               <button style = "border:0px; background-color:#4285F4; margin-top:8%;\
+                  height:35px; width:80%;margin-left:19%;" type = "submit">\
+                  <strong>book</strong>\
+               </button>\
+            </center>\
+         </div>\
+      </form>';
+      return html;
+	}
+
+
 	function get_locations() {
 		$.ajaxSetup({
 			async: true,
@@ -14,6 +39,13 @@
 		});
 		$.get('/get_locations', function(data) {
 			console.log(data);
+			for (var key in data) {
+				var type = data[key]["type"]
+				var address = data[key]["type"]
+				html = get_location_form(key, data[key])
+				//console.log(html);
+				$('#all_locations').append(html);
+			}
 		});
 	}
 
@@ -34,7 +66,8 @@
                
             </center>
          </div>
-      </form>
+</form>
+<div id="all_locations"></div>
       
 
 
