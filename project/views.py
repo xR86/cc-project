@@ -95,7 +95,10 @@ def login(request):
 
 def reserve_location(request):
     location = request.GET['name']
-    comment = request.GET['comment']
+    if request.GET['comment'] == '':
+        comment = "No comment provided by user"
+    else:
+        comment = request.GET['comment']
     username = request.COOKIES['username']
     _book.add_book(location, username, comment)
     return JsonResponse({"success": "yes"})
