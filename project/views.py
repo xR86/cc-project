@@ -27,7 +27,7 @@ def add_location(request):
     username = request.COOKIES['username']
     _locations.add_location(username, request.POST)
 
-    return render(request, 'client.html', global_vars)
+    return render(request, 'provider.html', global_vars)
 
 def get_locations_client(request):
     locations = _locations.get_locations_client()
@@ -37,6 +37,17 @@ def get_locations_provider(request):
     username = request.COOKIES['username']
     locations = _locations.get_locations_provider(username)
     return JsonResponse(locations)
+
+def get_reservations_provider(request):
+    location_name = request.GET['name']
+    reservations = _locations.get_reservations(location_name)
+    return JsonResponse(reservations)
+
+def confirm_reservations_provider(request):
+    key = request.GET['key']
+    _locations.confirm_reservation(key)
+    return JsonResponse({"response": "yes"})
+
 
 def register(request):
     username = request.POST["username"]
