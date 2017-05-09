@@ -7,7 +7,7 @@ def get_user(username, passwd):
     task_key = datastore_client.key(kind, username)
 
     q = datastore_client.get(task_key)
-    if q["password"] == passwd:
+    if q != None and q["password"] == passwd:
         return q
     else:
         return None

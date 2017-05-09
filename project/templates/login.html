@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 {% extends "base_bootstrap.html" %}
 
 {% block head %}
@@ -29,6 +30,7 @@
       <form class="form-horizontal"
             name = "form" action = "{% url "login" %}" 
             method = "POST" >{% csrf_token %} <!-- ??? -->
+      <div class="error">{{message}}</div>
      <fieldset>
        <!-- <legend>Legend</legend> -->
        <div class="form-group">
@@ -36,6 +38,17 @@
 
          <div class="col-md-10">
            <input type="text" id="username" class="form-control" name = "username" placeholder="Username">
+=======
+
+
+         method = "POST" >{% csrf_token %}
+         <div class="error">{{message}}</div>
+         <div style = "max-width:470px;">
+            <center> 
+               <input type = "text" style = "margin-left:20%;" 
+                  placeholder = "Identifiant" name = "username" />
+            </center>
+>>>>>>> 7818a0bb89854ee399d17c58293a8c4b14ed0943
          </div>
        </div>
        <div class="form-group">

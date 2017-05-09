@@ -7,8 +7,61 @@
 <body>
 
 <script type="text/javascript" charset="utf-8" async defer>
+
+	function confirm_booking(key) {
+		console.log("Am here");
+		status = $('#'+key).find('.dd').val();
+		$.ajax({
+			url: "/get_locations_provider/confirm_reservation",
+			type: "GET",
+			data: {key: key, status: status},
+			success: function(data) {
+				$('#' + key).find('div.status').html("Status: " + status);		
+			}
+		})
+	}
+
+	function get_reservation_form(key, data) {
+		var html = '<form id="' + key + '" action="javascript:confirm_booking(\'' + key + '\')"> \
+         <div class="location_name"> Location: ' + data["location"] + '</div> \
+         <div class="username"> Client: ' + data["username"] + ' </div> \
+         <div class="comment"> Comment:' + data["comment"] +' </div> \
+         <div class="status"> Status:' + data["status"] +' </div> \
+         </div> \
+         <div style = "max-width:470px;"> \
+            <center> \
+            	<div style = "max-width:470px;"> \
+            <center> \
+               <select class="dd" name="status"> \
+                  <option value="approved">approved</option>\
+                  <option value="declined">declined</option>\
+               </select>\
+            </center>\
+         </div>\
+               <button style = "border:0px; background-color:#4285F4; margin-top:8%;\
+                  height:35px; width:80%;margin-left:19%;" type = "submit">\
+                  <strong>CONFIRM</strong>\
+               </button>\
+            </center>\
+         </div>\
+      </form><div id="' + name + '"> </div>';
+      return html;
+	}
+
 	function see_bookings(name) {
-		console.log(name);
+
+		$.ajax({
+		    url:"/get_locations_provider/get_reservations",
+    		type: "GET",
+    		data: {name: name},
+    		success:function(data){
+    			for (var key in data) {
+					html = get_reservation_form(key, data[key])
+					$('#' + name).append(html);
+				}
+    		},
+    	});
+
 	}
 
 	function get_location_form(name, info) {
@@ -26,7 +79,7 @@
                </button>\
             </center>\
          </div>\
-      </form>';
+      </form><div id="' + name + '"> </div>';
       return html;
 	}
 
@@ -37,7 +90,6 @@
 			timeout: 10000
 		});
 		$.get('/get_locations_provider', function(data) {
-			console.log(data);
 			for (var key in data) {
 				var type = data[key]["type"]
 				var address = data[key]["type"]
@@ -81,8 +133,7 @@
 
 </form>
 
-<form name = "form" action = "javascript:get_locations()" 
-         method = "POST" >{% csrf_token %}
+<form name = "form" action = "javascript:get_locations()">{% csrf_token %}
          
          <div style = "max-width:470px;">
             <center> 
@@ -90,7 +141,7 @@
                <button style = "border:0px; background-color:#4285F4; margin-top:8%;
                   height:35px; width:80%;margin-left:19%;" type = "submit" 
                   value = "Get my locations" >
-                  <strong>Get locations</strong>
+                  <strong>Get my locations</strong>
                </button>
                
             </center>
