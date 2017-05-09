@@ -45,6 +45,18 @@
        return html;
  	}
 
+ 	function get_booking_form(info) {
+ 		// comment, location, status, username
+ 		var html = '<div class="booking_form"> \
+          <div class="location_name"> Location: ' + info["location"] + '</div> \
+          <div class="location_type"> Status: ' + info["status"] + ' </div> \
+          <div class="location_address"> Comment:' + info["comment"] +' </div> \
+          </div> \
+       </div>';
+       return html;
+
+ 	}
+
 
 	function get_locations() {
 		$.ajaxSetup({
@@ -52,18 +64,32 @@
 			timeout: 10000
 		});
 		$.get('/get_locations_client', function(data) {
-			console.log(data);
 			$('#all_locations').html(" ");
+			$('#my_bookings').html(" ");
 			for (var key in data) {
 				var type = data[key]["type"]
 				var address = data[key]["type"]
 				html = get_location_form(key, data[key])
-				//console.log(html);
 				$('#all_locations').append(html);
 			}
 		});
 	}
 
+	function get_my_bookings() {
+		$.ajaxSetup({
+			async: true,
+			timeout: 10000
+		});
+		$.get('/get_locations_client/my_bookings', function(data) {
+			$('#all_locations').html(" ");
+			for (var key in data) {
+				var html = get_booking_form(data[key]);
+				$('#my_bookings').append(html);
+			}
+			console.log(data);
+			//console.log(data)
+		});
+	}
 
 </script>
 <p>{{ message }}</p>
@@ -83,6 +109,23 @@
          </div>
 </form>
 <div id="all_locations"></div>
+
+
+<form name = "form" action = "javascript:get_my_bookings()" >{% csrf_token %}
+         
+         <div style = "max-width:470px;">
+            <center> 
+            
+               <button style = "border:0px; background-color:#4285F4; margin-top:8%;
+                  height:35px; width:80%;margin-left:19%;" type = "submit" 
+                  value = "SEE MY BOOKINGS" >
+                  <strong>SEE MY BOOKINGS</strong>
+               </button>
+               
+            </center>
+         </div>
+</form>
+<div id="my_bookings"></div>
       
 
 

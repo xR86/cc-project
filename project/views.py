@@ -69,6 +69,12 @@ def register(request):
     response.set_cookie('username', username)
     return response
 
+def get_client_bookings(request):
+    username =  request.COOKIES['username']
+    bookings = _book.get_bookings(username)
+    return JsonResponse(bookings)
+
+
 def login(request):
     username = request.POST["username"]
     passwd = request.POST["password"]

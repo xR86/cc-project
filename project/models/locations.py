@@ -69,11 +69,11 @@ def get_reservations(location):
     reservations = list(query.fetch())
     d = {}
     for r in reservations: 
-    # IF AICI       
-        d[r.key.name] = { 
-                "comment": r["comment"],
-                "location": r["location"],
-                "status": r["status"],
-                "username": r["username"]}
+        if r["location"] == location:       
+            d[r.key.name] = { 
+                    "comment": r["comment"],
+                    "location": r["location"],
+                    "status": r["status"],
+                    "username": r["username"]}
     return d
 

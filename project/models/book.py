@@ -13,3 +13,20 @@ def add_book(location, username, comment):
     task["comment"] = comment
     task["status"] = "pending"
     datastore_client.put(task)
+
+def get_bookings(username):
+    datastore_client = datastore.Client()
+
+    kind = 'Reservations'
+    query = datastore_client.query(kind=kind)
+    query.add_filter("username", "=", username)
+
+    reservations = list(query.fetch())
+    d = {}
+    for r in reservations: 
+        d[str(r.key.name)] = { 
+                "comment": r["comment"],
+                "location": r["location"],
+                "status": r["status"],
+                "username": r["username"]}
+    return d
