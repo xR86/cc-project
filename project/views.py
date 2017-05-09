@@ -78,19 +78,16 @@ def login(request):
             response = render(request, 'client.html', global_vars)
         else:
             response = render(request, 'provider.html', global_vars)
-        response.set_cookie('username', username)#, max_age=max_age, expires=expires)
+        response.set_cookie('username', username)
         print username
         return response
     else:
         return render(request, 'error.html', {"name": "caca"})
 
-def book(request):
-    response = render(request, 'book.html');
-    return response
 
-def add_book(request):  
-    location_name = ""
-    comment = request.POST["comment"]
-    username = request.COOKIES.get("username")
-    _book.add_book(location_name, username, comment)
-    return render(request, 'client.html', {"message": str(request.session.keys())})
+def reserve_location(request):
+    location = request.GET['name']
+    comment = request.GET['comment']
+    username = request.COOKIES['username']
+    _book.add_book(location, username, comment)
+    return JsonResponse({"success": "yes"})

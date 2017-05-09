@@ -5,5 +5,6 @@ from .. import views
 
 urlpatterns = [
     url(r'^$', views.get_locations_client, name='get_locations'),
+    url(r'^reserve_location/', views.reserve_location, name='reserve_location'),
     url(r'^static/(?P<path>.*)$', static.serve, {'document_root': 'project/static'}),
 ]
