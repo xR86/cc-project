@@ -45,7 +45,7 @@ def get_locations_provider(username):
             d[l.key.name] = { "address": l["location_address"], "type": l["location_type"]}
     return d
 
-def confirm_reservation(key):
+def confirm_reservation(key, status):
     datastore_client = datastore.Client()
 
     kind = 'Reservations'
@@ -59,7 +59,7 @@ def confirm_reservation(key):
 
         _mail.send_booking_confirmed_mail(task['username'])
 
-        task['status'] = 'approved'
+        task['status'] = status
 
         datastore_client.put(task)
 

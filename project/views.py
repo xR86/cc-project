@@ -46,7 +46,8 @@ def get_reservations_provider(request):
 
 def confirm_reservations_provider(request):
     key = request.GET['key']
-    _locations.confirm_reservation(key)
+    status = request.GET['status']
+    _locations.confirm_reservation(key, status)
     return JsonResponse({"response": "yes"})
 
 

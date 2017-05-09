@@ -10,12 +10,13 @@
 
 	function confirm_booking(key) {
 		console.log("Am here");
+		status = $('#'+key).find('.dd').val();
 		$.ajax({
 			url: "/get_locations_provider/confirm_reservation",
 			type: "GET",
-			data: {key: key},
+			data: {key: key, status: status},
 			success: function(data) {
-				$('#' + key).find('div.status').html("Status: approved");		
+				$('#' + key).find('div.status').html("Status: " + status);		
 			}
 		})
 	}
@@ -29,6 +30,14 @@
          </div> \
          <div style = "max-width:470px;"> \
             <center> \
+            	<div style = "max-width:470px;"> \
+            <center> \
+               <select class="dd" name="status"> \
+                  <option value="approved">approved</option>\
+                  <option value="declined">declined</option>\
+               </select>\
+            </center>\
+         </div>\
                <button style = "border:0px; background-color:#4285F4; margin-top:8%;\
                   height:35px; width:80%;margin-left:19%;" type = "submit">\
                   <strong>CONFIRM</strong>\
@@ -37,7 +46,6 @@
          </div>\
       </form><div id="' + name + '"> </div>';
       return html;
-
 	}
 
 	function see_bookings(name) {

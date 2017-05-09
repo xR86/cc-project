@@ -11,6 +11,6 @@ def send_register_mail(email_address):
 def send_booking_confirmed_mail(email_address):
     mail.send_mail(sender='ioana.bogdan25@gmail.com',
                    to=email_address,
-                   subject="Reservation confirmed!",
-                   body="""Your reservation has been confirmed!""")
+                   subject="Reservation reviewed!",
+                   body="""Your reservation has been reviewed!""")
 
