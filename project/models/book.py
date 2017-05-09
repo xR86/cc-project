@@ -2,6 +2,12 @@ from google.cloud import datastore
 
 import uuid
 
+def detect_language(text):
+    from google.cloud import translate
+    translate_client = translate.Client()
+    result = translate_client.detect_language(text)
+    return result['language']
+
 def add_book(location, username, comment):
     datastore_client = datastore.Client()
 
@@ -11,6 +17,7 @@ def add_book(location, username, comment):
     task["username"] = username
     task["location"] = location
     task["comment"] = comment
+    task["language"] = detect_language(comment)
     task["status"] = "pending"
     datastore_client.put(task)
 
