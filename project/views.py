@@ -55,17 +55,20 @@ def register(request):
     vpasswd = request.POST["verify_password"]
     status = request.POST["status"]
     
-    if passwd == vpasswd and not _register.username_exists(username):
-        _register.create_user(username, passwd, status)
+    if passwd != vpasswd:
+        return render(request, 'register.html', {"message": "Password and password validate are not the same."})
+    elif _register.username_exists(username):
+        return render(request, 'register.html', {"message": "Username already exists."})
+    elif not _register.valid_username(username):
+        return render(request, 'register.html', {"message": "Invalid username. An e-mail is required."})
     else:
-        return render(request, 'error.html', global_vars)
+        _register.create_user(username, passwd, status)
         
     if status == "client":
-        response = render(request, 'client.html', global_vars)
-    elif status == "provider":
-        response = render(request, 'provider.html', global_vars)
+        response = render(request, 'client.html')
     else:
-        return render(request, 'error.html', global_vars)
+        response = render(request, 'provider.html')
+
     response.set_cookie('username', username)
     return response
 

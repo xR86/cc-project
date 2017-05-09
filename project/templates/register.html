@@ -3,11 +3,11 @@
       
       <form name = "form" action = "{% url "register" %}" 
          method = "POST" >{% csrf_token %}
-         
+         <div class="error">{{message}}</div>
          <div style = "max-width:470px;">
             <center> 
                <input type = "text" style = "margin-left:20%;" 
-                  placeholder = "Identifiant" name = "username" />
+                  placeholder = "Email" name = "username" />
             </center>
          </div>
 			
