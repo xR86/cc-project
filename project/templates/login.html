@@ -1,52 +1,78 @@
-<!DOCTYPE html>
-<html>
-<head>
-	<title></title>
-</head>
-<body>
-<html>
-   <body>
-      
-      <form name = "form" action = "{% url "login" %}" 
-         method = "POST" >{% csrf_token %}
-         
-         <div style = "max-width:470px;">
-            <center> 
-               <input type = "text" style = "margin-left:20%;" 
-                  placeholder = "Identifiant" name = "username" />
-            </center>
+{% extends "base_bootstrap.html" %}
+
+{% block head %}
+ {{ block.super }}
+
+{% endblock %}
+
+{% block title %} <title> Login </title> {% endblock %}
+
+{% block stylesheets %}
+ {{ block.super }}
+
+{% endblock %}
+
+
+
+{% block content %}
+
+<div class="col-md-8 col-md-offset-2">
+   <div class="row">
+      <h2><span class="col-xs-1">#</span>
+      <a href="#" class="col-xs-6">Login</a>
+      <div class="col-xs-5"><hr></div>
+      </h2>
+   </div>
+
+   <div class="panel panel-default">
+      <div class="panel-body">
+      <form class="form-horizontal"
+            name = "form" action = "{% url "login" %}" 
+            method = "POST" >{% csrf_token %} <!-- ??? -->
+     <fieldset>
+       <!-- <legend>Legend</legend> -->
+       <div class="form-group">
+         <label for="inputEmail" class="col-md-2 control-label">Username</label>
+
+         <div class="col-md-10">
+           <input type="text" id="username" class="form-control" name = "username" placeholder="Username">
          </div>
-			
-         <br>
-         
-         <div style = "max-width:470px;">
-            <center>
-               <input type = "password" style = "margin-left:20%;" 
-                  placeholder = "password" name = "password" />
-            </center>
+       </div>
+       <div class="form-group">
+         <label for="inputPassword" class="col-md-2 control-label">Password</label>
+
+         <div class="col-md-10">
+           <input type="password" class="form-control" name = "password" placeholder="Password">
          </div>
-			
-         <br>
-         
-         <div style = "max-width:470px;">
-            <center> 
-            
-               <button style = "border:0px; background-color:#4285F4; margin-top:8%;
-                  height:35px; width:80%;margin-left:19%;" type = "submit" 
-                  value = "Login" >
-                  <strong>Login</strong>
-               </button>
-               
-            </center>
+       </div>
+       
+       <div class="form-group">
+         <div class="col-md-10 col-md-offset-2">
+           <button type="submit" class="btn btn-raised btn-primary">Login</button>
          </div>
+       </div>
+     </fieldset>
+   </form>
+   </div>
+   </div>
+
+   <p><a href="/register" class="btn btn-default">Don&#39;t have an account ?</a></p>
+
+</div>
+
+{% endblock %}
 
 
-         
-      </form>
-      
-   </body>
-</html>
+{% block scripts %}
 
+   <script>
+      window.onload = function() {
+        keepFocus();
+      }
 
-</body>
-</html>
+      function keepFocus() {
+        document.getElementById("username").focus();
+      }
+   </script>
+
+{% endblock %}
