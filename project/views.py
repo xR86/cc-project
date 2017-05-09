@@ -5,11 +5,13 @@ from django.http import JsonResponse
 from models import login as _login
 from models import register as _register
 from models import locations as _locations
+from models import book as _book
 
 import datetime
 
 global_vars = {
-    "app_name": "cc-project"
+    "app_name": "cc-project",
+    "message" : ""
 }
 
 def index(request):
@@ -70,3 +72,14 @@ def login(request):
         return response
     else:
         return render(request, 'error.html', {"name": "caca"})
+
+def book(request):
+    response = render(request, 'book.html');
+    return response
+
+def add_book(request):  
+    location_name = ""
+    comment = request.POST["comment"]
+    username = request.COOKIES.get("username")
+    _book.add_book(location_name, username, comment)
+    return render(request, 'client.html', {"message": str(request.session.keys())})

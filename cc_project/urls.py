@@ -25,5 +25,6 @@ urlpatterns = [
 	url(r'^login/', include('project.controller.login_urls')),
     url(r'^get_locations_client/', include('project.controller.client_location_urls')),
     url(r'^get_locations_provider/', include('project.controller.provider_location_urls')),
+    url(r'^book/', include('project.controller.book_urls')),
     url(r'^admin/', admin.site.urls),
 ] + static(settings.STATIC_URL, document_root=settings.STATIC_ROOT)
