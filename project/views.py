@@ -75,14 +75,13 @@ def login(request):
     user = _login.get_user(username, passwd)
     if user:
         if user["status"] == "client":
-            response = render(request, 'client.html', global_vars)
+            response = render(request, 'client.html', {"message": ""})
         else:
-            response = render(request, 'provider.html', global_vars)
+            response = render(request, 'provider.html', {"message": ""})
         response.set_cookie('username', username)
-        print username
         return response
     else:
-        return render(request, 'error.html', {"name": "caca"})
+        return render(request, 'login.html', {"message": "Invalid log in data"})
 
 
 def reserve_location(request):
