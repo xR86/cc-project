@@ -6,6 +6,7 @@ from models import login as _login
 from models import register as _register
 from models import locations as _locations
 from models import book as _book
+from models import mail as _mail
 
 import datetime
 
@@ -66,6 +67,7 @@ def register(request):
         response = render(request, 'provider.html', global_vars)
     else:
         return render(request, 'error.html', global_vars)
+    _mail.send_register_mail(username)
     response.set_cookie('username', username)
     return response
 

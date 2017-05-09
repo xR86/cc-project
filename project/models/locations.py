@@ -1,5 +1,7 @@
 from google.cloud import datastore
 
+import mail as _mail
+
 def add_location(username, data):
     location_name = data["location_name"]
     location_type = data["location_type"]
@@ -54,6 +56,8 @@ def confirm_reservation(key):
         if not task:
             raise ValueError(
                 'Task does not exist.')
+
+        _mail.send_booking_confirmed_mail(task['username'])
 
         task['status'] = 'approved'
 
