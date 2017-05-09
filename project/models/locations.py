@@ -57,7 +57,7 @@ def confirm_reservation(key, status):
             raise ValueError(
                 'Task does not exist.')
 
-        _mail.send_booking_confirmed_mail(task['username'])
+        _mail.send_booking_confirmed_mail(task['username'], task['language'])
 
         task['status'] = status
 
