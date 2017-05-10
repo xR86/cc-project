@@ -15,6 +15,19 @@
 
 {% block content %}
 
+<div class="row">
+  <div class="col-md-3 col-md-offset-9">
+    <a href="/" class="btn btn-default btn-raised btn-primary" style="float: right;">Logout</a>
+  </div>
+</div>
+
+<div class="col-md-8 col-md-offset-2">
+   
+
+   <div class="panel panel-default">
+      <div class="panel-body">
+
+
 <p>{{ message }}</p>
 <form name = "form" action = "javascript:get_locations()" 
          method = "POST" >{% csrf_token %}
@@ -22,8 +35,7 @@
          <div style = "max-width:470px;">
             <center> 
             
-               <button style = "border:0px; background-color:#4285F4; margin-top:8%;
-                  height:35px; width:80%;margin-left:19%;" type = "submit" 
+               <button class="btn btn-raised btn-primary" type = "submit" 
                   value = "Get locations" >
                   <strong>Get locations</strong>
                </button>
@@ -39,8 +51,7 @@
          <div style = "max-width:470px;">
             <center> 
             
-               <button style = "border:0px; background-color:#4285F4; margin-top:8%;
-                  height:35px; width:80%;margin-left:19%;" type = "submit" 
+               <button class="btn btn-raised btn-primary" type = "submit" 
                   value = "SEE MY BOOKINGS" >
                   <strong>SEE MY BOOKINGS</strong>
                </button>
@@ -49,6 +60,8 @@
          </div>
 </form>
 <div id="my_bookings"></div>
+
+</div></div></div>
 
 {% endblock %}
 
@@ -83,10 +96,9 @@
           </div> \
           <div class="status"></div>\
           <div style = "max-width:470px;"> \
-          <div style = "max-width:470px;"><input class= "comment" type = "text" style = "margin-left:20%;" placeholder = "add comments" name = "comment" /></div>\
+          <div style = "max-width:470px;"><input class= "comment form-control" type = "text"  placeholder = "add comments" name = "comment" /></div>\
              <center> \
-                <button style = "border:0px; background-color:#4285F4; margin-top:8%;\
-                   height:35px; width:80%;margin-left:19%;" type = "submit">\
+                <button class="btn btn-raised btn-primary" type = "submit">\
                    <strong>BOOK</strong>\
                 </button>\
              </center>\

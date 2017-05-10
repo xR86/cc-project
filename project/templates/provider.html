@@ -15,26 +15,39 @@
 
 {% block content %}
 
-<form name = "form" action = "{% url "add_location" %}" method = "POST">
+<div class="row">
+  <div class="col-md-3 col-md-offset-9">
+    <a href="/" class="btn btn-default btn-raised btn-primary" style="float: right;">Logout</a>
+  </div>
+</div>
+
+<div class="col-md-8 col-md-offset-2">
+   
+
+   <div class="panel panel-default">
+      <div class="panel-body">
+
+
+
+<form class="form-horizontal" name = "form" action = "{% url "add_location" %}" method = "POST">
 {% csrf_token %}
   <div style = "max-width:470px;">
     <center>
-      <input type = "text" style = "margin-left:20%;" placeholder = "Location name" name = "location_name" />
+      <input type = "text" class="form-control" placeholder = "Location name" name = "location_name" />
       </center>
 
       <center>
-      <input type = "text" style = "margin-left:20%;" placeholder = "Location type" name = "location_type" />
+      <input type = "text" class="form-control" placeholder = "Location type" name = "location_type" />
       </center>
 
     <center>
-      <input type = "text" style = "margin-left:20%;" placeholder = "Location address" name = "location_address" />
+      <input type = "text" class="form-control" placeholder = "Location address" name = "location_address" />
       </center>
 
       <div style = "max-width:470px;">
             <center> 
             
-               <button style = "border:0px; background-color:#4285F4; margin-top:8%;
-                  height:35px; width:80%;margin-left:19%;" type = "submit" 
+               <button class="btn btn-raised btn-primary" type = "submit" 
                   value = "Add" >
                   <strong>Add</strong>
                </button>
@@ -45,14 +58,20 @@
     </div>
 
 </form>
+      </div></div></div>
+
+<div class="col-md-8 col-md-offset-2">
+   
+
+   <div class="panel panel-default">
+      <div class="panel-body">
 
 <form name = "form" action = "javascript:get_locations()">{% csrf_token %}
          
          <div style = "max-width:470px;">
             <center> 
             
-               <button style = "border:0px; background-color:#4285F4; margin-top:8%;
-                  height:35px; width:80%;margin-left:19%;" type = "submit" 
+               <button class="btn btn-raised btn-primary" type = "submit" 
                   value = "Get my locations" >
                   <strong>Get my locations</strong>
                </button>
@@ -61,6 +80,8 @@
          </div>
 </form>
 <div id="all_locations"></div>
+
+</div></div></div>
 
 {% endblock %}
 
@@ -94,15 +115,18 @@
          <div style = "max-width:470px;"> \
             <center> \
               <div style = "max-width:470px;"> \
-            <center> \
-               <select class="dd" name="status"> \
-                  <option value="approved">approved</option>\
-                  <option value="declined">declined</option>\
-               </select>\
-            </center>\
+<div class="form-group">\
+         <label for="select111" class="col-md-2 control-label">Answer</label>\
+\
+         <div class="col-md-10">\
+           <select class="dd form-control" name="status">\
+             <option value="approved">approved</option>\
+             <option value="declined">declined</option>\
+           </select>\
          </div>\
-               <button style = "border:0px; background-color:#4285F4; margin-top:8%;\
-                  height:35px; width:80%;margin-left:19%;" type = "submit">\
+      </div>\
+         </div>\
+               <button class="btn btn-raised btn-primary" type = "submit">\
                   <strong>CONFIRM</strong>\
                </button>\
             </center>\
@@ -139,8 +163,7 @@
          </div> \
          <div style = "max-width:470px;"> \
             <center> \
-               <button style = "border:0px; background-color:#4285F4; margin-top:8%;\
-                  height:35px; width:80%;margin-left:19%;" type = "submit">\
+               <button class="btn btn-raised btn-primary" type = "submit">\
                   <strong>SEE BOOKINGS</strong>\
                </button>\
             </center>\
