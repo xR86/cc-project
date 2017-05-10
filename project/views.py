@@ -15,6 +15,13 @@ global_vars = {
     "message" : ""
 }
 
+# mocked pages
+
+# def get_mock_client_page(request):
+#     return render(request, 'client.html', global_vars)
+
+# end-mocked pages
+
 def index(request):
     return render(request, 'index.html', global_vars)
 
@@ -70,6 +77,8 @@ def register(request):
         response = render(request, 'client.html')
     else:
         response = render(request, 'provider.html')
+
+    # comment this if you want to test locally
     _mail.send_register_mail(username)
     response.set_cookie('username', username)
     return response

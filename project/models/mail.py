@@ -1,3 +1,4 @@
+# comment everything to test locally
 from google.appengine.api import mail
 from google.cloud import translate
 
