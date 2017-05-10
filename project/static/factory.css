@@ -1,0 +1,817 @@
+/* Base #3f3f3f */
+
+*{
+  margin: 0px;
+  padding: 0px;
+}
+
+body{
+  background: #2d2d2d;
+}
+
+/* Wires */
+#wire1{
+  position: absolute;
+  top: 120px;
+  left: 50px;
+  width: 170px;
+  height: 1px;
+  background: #4f4f4f;
+  transform: rotate(35deg);
+  z-index: -1;
+  animation: wireAni 2s infinite;
+}
+
+#wire2{
+  position: absolute;
+  top: 188px;
+  left: 200px;
+  width: 170px;
+  height: 1px;
+  background: #4f4f4f;
+  z-index: -1;
+  animation: wireAni 2s 2s infinite;
+}
+
+#wire3{
+  position: absolute;
+  top: 188px;
+  left: 350px;
+  width: 170px;
+  height: 1px;
+  background: #4f4f4f;
+  z-index: -1;
+  animation: wireAni 3s 1s infinite;
+}
+
+#wire4{
+  position: absolute;
+  top: 188px;
+  left: 520px;
+  width: 150px;
+  height: 1px;
+  background: #4f4f4f;
+  z-index: -1;
+  animation: wireAni 2s 0.3s infinite;
+}
+
+#wire5{
+  position: absolute;
+  top: 215px;
+  left: 70px;
+  width: 200px;
+  height: 1px;
+  background: #4f4f4f;
+  transform: rotate(65deg);
+  z-index: -1;
+  animation: wireAni 2s 0.3s infinite;
+}
+
+#wire6{
+  position: absolute;
+  top: 270px;
+  left: 292px;
+  width: 160px;
+  height: 1px;
+  background: #4f4f4f;
+  transform: rotate(80deg);
+  z-index: -1;
+  animation: wireAni 1s 0.1s infinite;
+}
+
+#wire7{
+  position: absolute;
+  top: 218px;
+  left: 494px;
+  width: 60px;
+  height: 1px;
+  background: #4f4f4f;
+  transform: rotate(54deg);
+  z-index: -1;
+  animation: wireAni 4s 0.5s infinite;
+}
+
+#wire8{
+  position: absolute;
+  top: 220px;
+  left: 587px;
+  width: 90px;
+  height: 1px;
+  background: #4f4f4f;
+  transform: rotate(145deg);
+  z-index: -1;
+  animation: wireAni 2s 0.5s infinite;
+}
+
+#wire9{
+  position: absolute;
+  top: 290px;
+  left: 410px;
+  width: 170px;
+  height: 1px;
+  background: #4f4f4f;
+  transform: rotate(152deg);
+  z-index: -1;
+  animation: wireAni 3s 0.4s infinite;
+}
+
+#wire10{
+  position: absolute;
+  top: 307px;
+  left: 200px;
+  width: 140px;
+  height: 1px;
+  background: #4f4f4f;
+  transform: rotate(15deg);
+  z-index: -1;
+  animation: wireAni 3s 0.4s infinite;
+}
+
+#wire11{
+  position: absolute;
+  top: 270px;
+  left: 536px;
+  width: 140px;
+  height: 1px;
+  background: #4f4f4f;
+  transform: rotate(30deg);
+  z-index: -1;
+  animation: wireAni 3s 0.4s infinite;
+}
+
+@keyframes wireAni{
+  0%, 100%{
+    background: #848484; 
+  }
+  50%{
+    background: #4f4f4f;
+  }
+}
+
+/* DBs */
+#db1{
+  position: absolute;
+  top: 20px;
+  left: 30px;
+  width: 100px;
+  height: 130px;
+}
+
+.db1Layer{
+  position: relative;
+  top: 0px;
+  left: 0px;
+  width: 100px;
+  height: 20px;
+  background: #3f3f3f;
+  margin-bottom: 1px;
+  border-radius: 10px 10px;
+}
+
+.dbLight{
+  position: absolute;
+  top: 10px;
+  left: 10px;
+  width: 5px;
+  height: 5px;
+  border-radius: 50%;
+}
+
+.redLight{
+  background: #db2525;
+  animation: lightBlink 0.5s infinite;
+}
+
+.firstLight{
+  left: 10px;
+  animation-delay: 0s;
+}
+
+.secondLight{
+  left: 17px;
+  animation-delay: 0.2s;
+}
+
+.thirdLight{
+  left: 24px;
+  animation-delay: 0.4s;
+}
+
+@keyframes lightBlink{
+  0%{
+    opacity: 0.2;
+  }
+  100%{
+    opacoty: 1;
+  }
+}
+
+/* Servers */
+#server1{
+  position: absolute;
+  top: 100px;
+  left: 200px;
+  width: 60px;
+  height: 100px;
+  background: #3f3f3f;
+}
+
+#server2{
+  position: absolute;
+  top: 230px;
+  left: 200px;
+  width: 60px;
+  height: 100px;
+  background: #3f3f3f;
+}
+
+.serverSeparator{
+  position: relative;
+  top: 10px;
+  left: 0px;
+  color: #6d6d6d;
+  overflow: hidden;
+}
+
+.serverLight{
+  position: absolute;
+  top: 10px;
+  left: 10px;
+  width: 4px;
+  height: 4px;
+  border-radius: 50%;
+}
+
+.blueLight{
+  background: #23b5ea;
+  animation: lightBlink 0.2s infinite;
+}
+
+.firstLight2{
+  left: 10px;
+  animation-delay: 0s;
+}
+
+.secondLight2{
+  left: 17px;
+  animation-delay: 0.3s;
+}
+
+.thirdLight2{
+  left: 24px;
+  animation-delay: 0.5s;
+}
+
+/* Switch */
+#switch1{
+  position: absolute;
+  top: 110px;
+  left: 100px;
+  width: 60px;
+  height: 20px;
+  background: #3f3f3f;
+}
+
+#switch2{
+  position: absolute;
+  top: 233px;
+  left: 541px;
+  width: 60px;
+  height: 20px;
+  background: #3f3f3f;
+}
+
+.vioLight{
+  position: absolute;
+  top: 10px;
+  left: 10px;
+  width: 4px;
+  height: 4px;
+  border-radius: 50%;
+}
+
+.vioLight{
+  background: #9f3cd1;
+  animation: lightBlink 0.2s infinite;
+}
+
+.firstLight3{
+  left: 10px;
+  animation-delay: 0s;
+}
+
+.secondLight3{
+  left: 17px;
+  animation-delay: 0.3s;
+}
+
+.thirdLight3{
+  left: 24px;
+  animation-delay: 0.5s;
+}
+
+/* Screen */
+#screen1{
+  position: absolute;
+  top: 110px;
+  left: 300px;
+  width: 120px;
+  height: 65px;
+  background: #333333;
+}
+
+#screen1:after{
+  content: "";
+  position: absolute;
+  top: 100%;
+  left: 50%;
+  width: 26px;
+  margin-left: -13px;
+  height: 27px;
+  background: #3a3a3a;
+}
+
+#screen1Inner{
+  position: absolute;
+  top: 5px;
+  left: 5px;
+  width: 110px;
+  height: 55px;
+  background: #58165b;
+}
+
+#logo{
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  width: 20px;
+  height: 20px;
+  margin-top: -10px;
+  margin-left: -10px;
+  background: #6d1a65;
+  animation: logoAni 6s infinite;
+}
+
+@keyframes logoAni{
+  0%, 100%{
+      border-radius: 100px 790px;
+      transform: rotate(0deg);
+  }
+  50%{
+      border-radius: 790px 100px;
+      transform: rotate(360deg);
+  }
+}
+
+#screen2{
+  position: absolute;
+  top: 110px;
+  left: 450px;
+  width: 120px;
+  height: 65px;
+  background: #333333;
+}
+
+#screen2:after{
+  content: "";
+  position: absolute;
+  top: 100%;
+  left: 50%;
+  width: 26px;
+  margin-left: -13px;
+  height: 27px;
+  background: #3a3a3a;
+}
+
+#screen2Inner{
+  position: absolute;
+  top: 5px;
+  left: 5px;
+  width: 110px;
+  height: 55px;
+  background: #1a4c6d;
+}
+
+#logo2{
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  width: 20px;
+  height: 20px;
+  margin-top: -10px;
+  margin-left: -10px;
+  background: #0e3956;
+  animation: logoAni 3s infinite;
+}
+
+#screen3{
+  position: absolute;
+  top: 110px;
+  left: 600px;
+  width: 120px;
+  height: 65px;
+  background: #333333;
+}
+
+#screen3:after{
+  content: "";
+  position: absolute;
+  top: 100%;
+  left: 50%;
+  width: 26px;
+  margin-left: -13px;
+  height: 27px;
+  background: #3a3a3a;
+}
+
+#screen3Inner{
+  position: absolute;
+  top: 5px;
+  left: 5px;
+  width: 110px;
+  height: 55px;
+  background: #0c5147;
+}
+
+#logo3{
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  width: 20px;
+  height: 20px;
+  margin-top: -10px;
+  margin-left: -10px;
+  background: #1d9382;
+  animation: logoAni 9s infinite;
+}
+
+/* Injector */
+#injector{
+  position: absolute;
+  top: 250px;
+  left: 330px;
+  width: 100px;
+  height: 130px;
+  background: #3f3f3f;
+}
+
+#injectorInner{
+  position: absolute;
+  top: 10px;
+  left: 10px;
+  width: 80px;
+  height: 110px;
+  background: #2d2d2d;
+  overflow: hidden;
+}
+
+#fuser{
+  position: absolute;
+  top: 10px;
+  left: 50%;
+  width: 36px;
+  height: 10px;
+  background: #3f3f3f;
+  margin-left: -18px;
+  border-bottom-left-radius: 10px 10px;
+  border-bottom-right-radius: 10px 10px;
+}
+
+#fuser:after{
+  content: "";
+  position: absolute;
+  top: 9px;
+  left: 50%;
+  border-left: 10px solid transparent;
+	border-right: 10px solid transparent;
+	border-top: 10px solid  #3f3f3f;
+  margin-left: -10px;
+}
+
+#liquid{
+  position: absolute;
+  top: 70px;
+  left: 0px;
+  width: 140px;
+  height: 50px;
+  background: #ad2d2d;
+  overflow: hidden;
+  animation: liquidAni 6s infinite;
+}
+
+@keyframes liquidAni{
+  0%, 100%{
+    transform: rotate(2deg);
+  }
+  50%{
+    transform: rotate(-3deg);
+  }
+}
+
+.drop{
+  position: relative;
+  top: 0px;
+  left: 50%;
+  width: 4px;
+  height: 4px;
+  margin-left: -1px;
+  border-radius: 50%;
+  background: #ad2d2d;
+  z-index: 0;
+}
+
+.firstDrop{
+  animation: dropAni 1s infinite;
+}
+
+.secondDrop{
+  animation: dropAni 0.8s 2s infinite;
+}
+
+@keyframes dropAni{
+  0%{
+    top: 0px;
+  }
+  100%{
+    top: 100px;
+  }
+}
+
+#hole{
+  position: absolute;
+  top: 110px;
+  left: 50%;
+  width: 20px;
+  height: 20px;
+  margin-left: -10px;
+  background: #ad2d2d;
+}
+
+.dropOut{
+  position: relative;
+  top: 20px;
+  left: 50%;
+  width: 4px;
+  height: 0px;
+  margin-left: -2px;
+  background: #ad2d2d;
+  animation: dropAni2 1s 0.69s infinite linear;
+  z-index: 0;
+}
+
+#lock{
+  position: absolute;
+  top: 16px;
+  left: 0px;
+  width: 20px;
+  height: 4px;
+  background: #3f3f3f;
+  z-index: 5;
+  animation: lockAni 1s 0.6s infinite;
+}
+
+@keyframes lockAni{
+  0%, 100%{
+    width: 0px;
+  }
+  50%{
+    width: 20px;
+  }
+}
+
+@keyframes dropAni2{
+  0%{
+    height: 0px;
+  }
+  80%{
+    height: 00px;
+  }
+  100%{
+    height: 100px;
+  }
+}
+
+/* Diagram */
+#diagram{
+  position: absolute;
+  top: 283px;
+  left: 550px;
+  width: 200px;
+  height: 100px;
+  background: #3f3f3f;
+}
+
+#diagramInner{
+  position: absolute;
+  top: 5px;
+  left: 5px;
+  width: 190px;
+  height: 90px;
+  background: #2d2d2d;
+  overflow: hidden;
+}
+
+.strip{
+  width: 50px;
+  height: 3px;
+  background: #0c5147;
+  z-index: 2;
+  animation: stripAni 8s infinite;
+}
+
+@keyframes stripAni{
+  0%, 100%{
+    background: #0c5147;
+  }
+  50%{
+    background: #58165b;
+  }
+}
+
+.firstStrip{
+  position: absolute;
+  top: 24px;
+  left: -4px;
+  transform: rotate(30deg);
+  border-top-left-radius: 50%;
+  z-index: 5;
+}
+
+.firstStrip:after{
+  content: "";
+  position: absolute;
+  top: -3px;
+  left: 43px;
+  width: 8px;
+  height: 8px;
+  background: #2dad71;
+  border-radius: 50%;
+}
+
+.secondStrip{
+  position: absolute;
+  top: 54px;
+  left: 28px;
+  width: 40px !important;
+  transform: rotate(70deg);
+  z-index: 4;
+}
+
+.secondStrip:after{
+  content: "";
+  position: absolute;
+  top: -4px;
+  left: 32px;
+  width: 8px;
+  height: 8px;
+  background: #2dad71;
+  border-radius: 50%;
+  z-index: 2;
+}
+
+.thirdStrip{
+  position: absolute;
+  top: 55px;
+  left: 49px;
+  width: 70px !important;
+  transform: rotate(-30deg);
+  z-index: 3;
+}
+
+.thirdStrip:after{
+  content: "";
+  position: absolute;
+  top: -3px;
+  left: 65px;
+  width: 8px;
+  height: 8px;
+  background: #2dad71;
+  border-radius: 50%;
+  z-index: 2 !important;
+}
+
+.fourthStrip{
+  position: absolute;
+  top: 53px;
+  left: 110px;
+  width: 90px !important;
+  transform: rotate(20deg);
+  z-index: 0;
+}
+
+#treadmill{
+  position: absolute;
+  top: 480px;
+  left: 20px;
+  width: 800px;
+  height: 50px;
+  border: 2px solid #3f3f3f;
+}
+
+#leftCap{
+  position: absolute;
+  top: 430px;
+  left: 20px;
+  height: 50px;
+  width: 20px;
+  background: #2d2d2d;
+  z-index: 2;
+}
+
+#rightCap{
+  position: absolute;
+  top: 430px;
+  left: 800px;
+  height: 50px;
+  width: 200px;
+  background: #2d2d2d;
+  z-index: 2;
+}
+
+#upperMill{
+  position: absolute;
+  top: 430px;
+  left: 20px;
+  width: 970px;
+  height: 50px;
+  overflow: hidden;
+}
+
+.glass{
+  position: relative;
+  float: left;
+  top: 9px;
+  left: 40px;
+  margin-right: 32px;
+  width: 20px;
+  height: 40px;
+  border-left: 1px solid #3f3f3f;
+  border-right: 1px solid #3f3f3f;
+  border-bottom: 1px solid #3f3f3f;
+  animation: glassAni 3s infinite linear;
+  overflow: hidden;
+}
+
+.fill{
+  position: absolute;
+  top: 20px;
+  left: 1px;
+  width: 18px;
+  height: 30px;
+  background: #ad2d2d;
+}
+
+@keyframes fillAni{
+  0%, 100%{
+    transform: rotate(7deg);
+  }
+  50%{
+    transform: rotate(-3deg);
+  }
+}
+
+@keyframes glassAni{
+  0%{
+    left: 0px;
+  }
+  60%{
+    opacity: 1;
+  }
+  100%{
+    left: -160px;
+  }
+}
+
+.gear{
+  position: relative;
+  top: 0px;
+  left: 0px;
+  width: 49px;
+  height: 49px;
+  float: left;
+  margin-left: 115px;
+  border-radius: 50%;
+  border: 1px solid #3f3f3f;
+  overflow: hidden;
+  animation: gearAni 5s infinite linear;
+}
+
+@keyframes gearAni{
+  0%{
+    transform: rotate(360deg);
+  }
+  100%{
+    transform: rotate(0deg);
+  }
+}
+
+.gear:after{
+  content: "";
+  position: absolute;
+  top: 25px;
+  left: 0px;
+  width: 51px;
+  height: 1px;
+  background: #3f3f3f;
+  transform: rotate(45deg);
+}

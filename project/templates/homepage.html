@@ -10,15 +10,274 @@
 {% block stylesheets %}
  {{ block.super }}
 
+ <style>
+	/*Refactoring styles*/
+		/**Navbar colors*/
+    	.navbar.navbar-pink{
+    		background-color: #e2007a;
+    		border: 1px solid #e2007a;
+    		border-radius: 0px;
+    		color: #FFF;
+    		margin-bottom: 0px;
+    	}
+    	.navbar.navbar-brand:hover{
+    		color: #fff;
+    	}
+
+    	.navbar-default .navbar-brand,
+    	.navbar-default.navbar-pink .navbar-nav>li>a{
+    		color: #FFF;
+    	}
+    	.nav.nav-pills,
+    	.navbar-default .navbar-toggle .icon-bar{
+    		background-color: #FFF;
+    	}
+    	.tab-content.tab-dashboard{
+    		background-color: #f9f6f1;
+    		position: relative;
+    		top: -0.3rem;
+    		padding: 1rem;
+    	}
+    	.nav-pills li{
+    		width: 10rem;
+    	}
+    	.nav-pills li.active{
+    		-webkit-box-shadow: 0px 3px 0px 0px rgba(0,71,143,1);
+			-moz-box-shadow: 0px 3px 0px 0px rgba(0,71,143,1);
+			box-shadow: 0px 3px 0px 0px rgba(0,71,143,1);
+    	}
+    	.nav-pills li>a{
+    		padding: 10px 30px;
+    		border-radius: 0px;
+    	}
+    	.dashboard-divider{
+    		margin: 3px auto;
+    	}
+    	/**Material elements*/
+    	.card {
+		  border-radius: 2px;
+		  display: inline-block;
+		  background-color: #f0f0f0;
+		  border: 1px solid #faf8f5;
+		}
+		.card-elevation-1 {
+		  box-shadow: 0 1px 3px rgba(0,0,0,0.12), 0 1px 2px rgba(0,0,0,0.24);
+		  transition: all 0.3s cubic-bezier(.25,.8,.25,1);
+		}
+		.card-elevation-1:hover {
+		  box-shadow: 0 3px 6px rgba(0,0,0,0.16), 0 3px 6px rgba(0,0,0,0.23);
+		}
+    	@media only screen and (max-width: 768px){
+    	 	nav.navbar-pink.navbar-default .open .dropdown-menu>li>a{
+	    		color: #FFF;
+	    	}
+    	 }
+ </style>
+
+<link rel="stylesheet" href="project/static/pin.css">
+<link rel="stylesheet" href="project/static/factory.css">
+
+<style>
+	body{
+		overflow-x: hidden;
+	}
+
+	.overlay-text{
+		background-color: #ffffff90;
+		z-index: 1000;
+	}
+	.btn-white{
+		background-color: #fff;
+	}
+</style>
+
 {% endblock %}
 
 
 {% block content %}
-asdfg
+
+<nav class="navbar navbar-default navbar-pink">
+	  <div class="container-fluid">
+	    <!-- Brand and toggle get grouped for better mobile display -->
+	    <div class="navbar-header row">
+	      <button type="button" class="navbar-toggle collapsed col-md-2 col-md-offset-1" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1" aria-expanded="false">
+	        <span class="sr-only">Toggle navigation</span>
+	        <span class="icon-bar"></span>
+	        <span class="icon-bar"></span>
+	        <span class="icon-bar"></span>
+	      </button>
+	      
+	      <div class="col-md-12 col-xxs-8 col-md-offset-3">
+	      	<a class="navbar-brand" href="#">
+	      		<h2> Booking as a Service </h2>
+	      		<div class='pin'></div>
+				<div class='pulse'></div>
+	      	</a>
+	      </div>
+	      
+	    </div>
+
+	   
+
+		
+
+	   
+	  </div><!-- /.container-fluid -->
+
+	  <ul class="nav navbar-nav navbar-right">
+        	<li><a href="/login" class="btn btn-default btn-raised btn-primary">Login</a></li>
+        	<li>&nbsp;</p></li>
+        	<li><a href="/login" class="btn btn-default btn-raised btn-primary">Register</a></li>
+        	<li>&nbsp;</p></li>
+		</ul>
+	</nav>
+
+<div class="container-fluid">
+<div class="row">
+<div class="col-md-8 col-md-offset-1">
+	<div id="db1">
+	  <div class="db1Layer"></div>
+	  <div class="db1Layer">
+	    <div class="dbLight redLight firstLight"></div>
+	    <div class="dbLight redLight secondLight"></div>
+	    <div class="dbLight redLight thirdLight"></div>
+	  </div>
+	  <div class="db1Layer"></div>
+	</div>
+
+	<div id="wire1"></div>
+
+	<div id="server1">
+	  <div class="serverLight blueLight firstLight2"></div>
+	  <div class="serverLight blueLight secondLight2"></div>
+	  <div class="serverLight blueLight thirdLight2"></div>
+	  <div class="serverSeparator">________</div>
+	</div>
+
+	<div id="switch1">
+	  <div class="switchLight vioLight firstLight3"></div>
+	  <div class="switchLight vioLight secondLight3"></div>
+	  <div class="switchLight vioLight thirdLight3"></div>
+	</div>
+
+	<div id="wire2"></div>
+
+	<div id="screen1">
+	  <div id="screen1Inner">
+	    <div id="logo"></div>
+	  </div>
+	</div>
+
+	<div id="wire3"></div>
+
+	<div id="screen2">
+	  <div id="screen2Inner">
+	    <div id="logo2"></div>
+	  </div>
+	</div>
+
+	<div id="wire4"></div>
+
+	<div id="screen3">
+	  <div id="screen3Inner">
+	    <div id="logo3"></div>
+	  </div>
+	</div>
+
+	<div id="wire5"></div>
+	<div id="server2">
+	  <div class="serverLight blueLight firstLight2"></div>
+	  <div class="serverLight blueLight secondLight2"></div>
+	  <div class="serverLight blueLight thirdLight2"></div>
+	  <div class="serverSeparator">________</div>
+	</div>
+
+	<!-- Screens to Injector -->
+	<div id="wire6"></div>
+
+	<div id="switch2">
+	  <div class="switchLight vioLight firstLight3"></div>
+	  <div class="switchLight vioLight secondLight3"></div>
+	  <div class="switchLight vioLight thirdLight3"></div>
+	</div>
+	<div id="wire7"></div>
+	<div id="wire8"></div>
+	<div id="wire9"></div>
+	<div id="wire10"></div>
+
+	<div id="injector">
+	  <div id="injectorInner">
+	      <div id="liquid"></div>
+	      <div class="drop firstDrop"></div>
+	      <div class="drop secondDrop"></div>
+	  </div>
+	  <div id="fuser"></div>
+	  <div id="hole">
+	    <div class="dropOut"></div>
+	    <div id="lock"></div>
+	  </div>
+	</div>
+
+	<div id="wire11"></div>
+
+	<div id="diagram">
+	  <div id="diagramInner">
+	    <div class="strip firstStrip"></div>
+	    <div class="strip secondStrip"></div>
+	    <div class="strip thirdStrip"></div>
+	    <div class="strip fourthStrip"></div>
+	  </div>
+	</div>
+
+	<div id="leftCap"></div>
+	<div id="upperMill">
+	  <div class="glass"><div class="fill"></div></div>
+	  <div class="glass"><div class="fill"></div></div>
+	  <div class="glass"><div class="fill"></div></div>
+	  <div class="glass"><div class="fill"></div></div>
+	  <div class="glass"><div class="fill"></div></div>
+	  <div class="glass"><div class="fill"></div></div>
+	  <div class="glass"><div class="fill"></div></div>
+	  <div class="glass"><div class="fill"></div></div>
+	  <div class="glass"><div class="fill"></div></div>
+	  <div class="glass"><div class="fill"></div></div>
+	  <div class="glass"><div class="fill"></div></div>
+	  <div class="glass"><div class="fill"></div></div>
+	  <div class="glass"><div class="fill"></div></div>
+	  <div class="glass"><div class="fill"></div></div>
+	  <div class="glass"><div class="fill"></div></div>
+	  <div class="glass"><div class="fill"></div></div>
+	  <div class="glass"><div class="fill"></div></div>
+	  <div class="glass"><div class="fill"></div></div>
+	  <div class="glass"><div class="fill"></div></div>
+	</div>
+	<div id="rightCap"></div>
+
+	<div id="treadmill">
+	  <div class="gear"></div>
+	  <div class="gear"></div>
+	  <div class="gear"></div>
+	  <div class="gear"></div>
+	</div>
+</div>
+</div>
+</div>
+
 {% endblock %}
 
 
 {% block scripts %}
  {{ block.super }}
+
+ <script src="https://ajax.aspnetcdn.com/ajax/jquery/jquery-1.9.0.js"></script>
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-material-design/0.5.10/js/ripples.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-material-design/0.5.10/js/material.min.js"></script>
+
+<script>
+	$(function () {
+		$.material.init();
+	});
+</script>
 
 {% endblock %}
