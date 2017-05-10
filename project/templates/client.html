@@ -90,9 +90,9 @@
 
 	function get_location_form(name, info) {
  		var html = '<form id="' + name + '" action="javascript:book_request(\'' + name + '\')"> \
-          <div class="location_name"> Location: ' + name + '</div> \
-          <div class="location_type"> Type: ' + info["type"] + ' </div> \
-          <div class="location_address"> Address:' + info["address"] +' </div> \
+          <div class="location_name"> <kbd> Location: ' + name + '</kbd></div> \
+          <div class="location_type"> <kbd> Type: ' + info["type"] + ' </kbd></div> \
+          <div class="location_address"> <kbd> Address:' + info["address"] +' </kbd></div> \
           </div> \
           <div class="status"></div>\
           <div style = "max-width:470px;"> \
@@ -110,9 +110,9 @@
  	function get_booking_form(info) {
  		// comment, location, status, username
  		var html = '<div class="booking_form"> \
-          <div class="location_name"> Location: ' + info["location"] + '</div> \
-          <div class="location_type"> Status: ' + info["status"] + ' </div> \
-          <div class="location_address"> Comment:' + info["comment"] +' </div> \
+          <div class="location_name">  <kbd> Location: ' + info["location"] + ' </kbd></div> \
+          <div class="location_type">  <kbd> Status: ' + info["status"] + ' </kbd></div> \
+          <div class="location_address"> <kbd> Comment:' + info["comment"] +' </kbd></div> \
           </div> \
        </div>';
        return html;

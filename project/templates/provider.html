@@ -107,10 +107,10 @@
 
   function get_reservation_form(key, data) {
     var html = '<form id="' + key + '" action="javascript:confirm_booking(\'' + key + '\')"> \
-         <div class="location_name"> Location: ' + data["location"] + '</div> \
-         <div class="username"> Client: ' + data["username"] + ' </div> \
-         <div class="comment"> Comment:' + data["comment"] +' </div> \
-         <div class="status"> Status:' + data["status"] +' </div> \
+         <div class="location_name">  <kbd> Location: ' + data["location"] + '</kbd></div> \
+         <div class="username">  <kbd> Client: ' + data["username"] + ' </kbd></div> \
+         <div class="comment"> <kbd> Comment:' + data["comment"] +' </kbd></div> \
+         <div class="status"> <kbd> Status:' + data["status"] +' </kbd></div> \
          </div> \
          <div style = "max-width:470px;"> \
             <center> \
@@ -157,9 +157,9 @@
   function get_location_form(name, info) {
 
     var html = '<form action="javascript:see_bookings(\'' + name + '\')"> \
-         <div class="location_name"> Location: ' + name + '</div> \
-         <div class="location_type"> Type: ' + info["type"] + ' </div> \
-         <div class="location_address"> Address:' + info["address"] +' </div> \
+         <div class="location_name"> <kbd> Location: ' + name + ' </kbd></div> \
+         <div class="location_type"> <kbd> Type: ' + info["type"] + ' </kbd></div> \
+         <div class="location_address"> <kbd> Address:' + info["address"] +' </kbd></div> \
          </div> \
          <div style = "max-width:470px;"> \
             <center> \
