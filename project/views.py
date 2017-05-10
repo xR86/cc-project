@@ -57,6 +57,9 @@ def confirm_reservations_provider(request):
     _locations.confirm_reservation(key, status)
     return JsonResponse({"response": "yes"})
 
+def get_homepage(request):
+    return render(request, 'homepage.html')
+
 
 def register(request):
     username = request.POST["username"]

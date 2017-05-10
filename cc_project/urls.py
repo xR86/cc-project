@@ -20,6 +20,8 @@ from django.conf import settings
 from django.conf.urls.static import static
 
 urlpatterns = [
+
+    url(r'^$', include('project.controller.home')),
 	url(r'^project/', include('project.controller.project_urls')),
 	url(r'^register/', include('project.controller.register_urls')),
 	url(r'^login/', include('project.controller.login_urls')),
