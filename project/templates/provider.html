@@ -9,7 +9,6 @@
 <script type="text/javascript" charset="utf-8" async defer>
 
 	function confirm_booking(key) {
-		console.log("Am here");
 		status = $('#'+key).find('.dd').val();
 		$.ajax({
 			url: "/get_locations_provider/confirm_reservation",
@@ -55,6 +54,9 @@
     		type: "GET",
     		data: {name: name},
     		success:function(data){
+    			if (jQuery.isEmptyObject(data)) {
+       				$('#' + name).append("No reservations for this location.");
+    			}
     			for (var key in data) {
 					html = get_reservation_form(key, data[key])
 					$('#' + name).append(html);
@@ -90,6 +92,10 @@
 			timeout: 10000
 		});
 		$.get('/get_locations_provider', function(data) {
+			$('#all_locations').html(" ");
+    		if (jQuery.isEmptyObject(data)) {
+       			$('#all_locations').html("No locations.");
+    		}
 			for (var key in data) {
 				var type = data[key]["type"]
 				var address = data[key]["type"]

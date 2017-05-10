@@ -66,6 +66,9 @@
 		$.get('/get_locations_client', function(data) {
 			$('#all_locations').html(" ");
 			$('#my_bookings').html(" ");
+			if (jQuery.isEmptyObject(data)) {
+       			$('#all_locations').html("No locations.");
+    		}
 			for (var key in data) {
 				var type = data[key]["type"]
 				var address = data[key]["type"]
@@ -82,12 +85,14 @@
 		});
 		$.get('/get_locations_client/my_bookings', function(data) {
 			$('#all_locations').html(" ");
+			$('#my_bookings').html(" ");
+			if (jQuery.isEmptyObject(data)) {
+       			$('#my_bookings').html("No bookings.");
+    		}
 			for (var key in data) {
 				var html = get_booking_form(data[key]);
 				$('#my_bookings').append(html);
 			}
-			console.log(data);
-			//console.log(data)
 		});
 	}
 
