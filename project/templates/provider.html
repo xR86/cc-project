@@ -1,129 +1,36 @@
-<!DOCTYPE html>
-<html>
-<head>
-	<title></title>
-	<script src="https://ajax.aspnetcdn.com/ajax/jquery/jquery-1.9.0.js"></script>
-</head>
-<body>
+{% extends "base_bootstrap.html" %}
 
-<script type="text/javascript" charset="utf-8" async defer>
+{% block head %}
+ {{ block.super }}
 
-	function confirm_booking(key) {
-		status = $('#'+key).find('.dd').val();
-		$.ajax({
-			url: "/get_locations_provider/confirm_reservation",
-			type: "GET",
-			data: {key: key, status: status},
-			success: function(data) {
-				$('#' + key).find('div.status').html("Status: " + status);		
-			}
-		})
-	}
+{% endblock %}
 
-	function get_reservation_form(key, data) {
-		var html = '<form id="' + key + '" action="javascript:confirm_booking(\'' + key + '\')"> \
-         <div class="location_name"> Location: ' + data["location"] + '</div> \
-         <div class="username"> Client: ' + data["username"] + ' </div> \
-         <div class="comment"> Comment:' + data["comment"] +' </div> \
-         <div class="status"> Status:' + data["status"] +' </div> \
-         </div> \
-         <div style = "max-width:470px;"> \
-            <center> \
-            	<div style = "max-width:470px;"> \
-            <center> \
-               <select class="dd" name="status"> \
-                  <option value="approved">approved</option>\
-                  <option value="declined">declined</option>\
-               </select>\
-            </center>\
-         </div>\
-               <button style = "border:0px; background-color:#4285F4; margin-top:8%;\
-                  height:35px; width:80%;margin-left:19%;" type = "submit">\
-                  <strong>CONFIRM</strong>\
-               </button>\
-            </center>\
-         </div>\
-      </form><div id="' + name + '"> </div>';
-      return html;
-	}
+{% block title %} <title>Provider</title> {% endblock %}
 
-	function see_bookings(name) {
+{% block stylesheets %}
+ {{ block.super }}
 
-		$.ajax({
-		    url:"/get_locations_provider/get_reservations",
-    		type: "GET",
-    		data: {name: name},
-    		success:function(data){
-    			if (jQuery.isEmptyObject(data)) {
-       				$('#' + name).append("No reservations for this location.");
-    			}
-    			for (var key in data) {
-					html = get_reservation_form(key, data[key])
-					$('#' + name).append(html);
-				}
-    		},
-    	});
-
-	}
-
-	function get_location_form(name, info) {
-
-		var html = '<form action="javascript:see_bookings(\'' + name + '\')"> \
-         <div class="location_name"> Location: ' + name + '</div> \
-         <div class="location_type"> Type: ' + info["type"] + ' </div> \
-         <div class="location_address"> Address:' + info["address"] +' </div> \
-         </div> \
-         <div style = "max-width:470px;"> \
-            <center> \
-               <button style = "border:0px; background-color:#4285F4; margin-top:8%;\
-                  height:35px; width:80%;margin-left:19%;" type = "submit">\
-                  <strong>SEE BOOKINGS</strong>\
-               </button>\
-            </center>\
-         </div>\
-      </form><div id="' + name + '"> </div>';
-      return html;
-	}
+{% endblock %}
 
 
-	function get_locations() {
-		$.ajaxSetup({
-			async: true,
-			timeout: 10000
-		});
-		$.get('/get_locations_provider', function(data) {
-			$('#all_locations').html(" ");
-    		if (jQuery.isEmptyObject(data)) {
-       			$('#all_locations').html("No locations.");
-    		}
-			for (var key in data) {
-				var type = data[key]["type"]
-				var address = data[key]["type"]
-				html = get_location_form(key, data[key])
-				//console.log(html);
-				$('#all_locations').append(html);
-			}
-		});
-	}
-
-</script>
+{% block content %}
 
 <form name = "form" action = "{% url "add_location" %}" method = "POST">
 {% csrf_token %}
-	<div style = "max-width:470px;">
-		<center>
-			<input type = "text" style = "margin-left:20%;" placeholder = "Location name" name = "location_name" />
-	    </center>
+  <div style = "max-width:470px;">
+    <center>
+      <input type = "text" style = "margin-left:20%;" placeholder = "Location name" name = "location_name" />
+      </center>
 
-	    <center>
-			<input type = "text" style = "margin-left:20%;" placeholder = "Location type" name = "location_type" />
-	    </center>
+      <center>
+      <input type = "text" style = "margin-left:20%;" placeholder = "Location type" name = "location_type" />
+      </center>
 
-		<center>
-			<input type = "text" style = "margin-left:20%;" placeholder = "Location address" name = "location_address" />
-	    </center>
+    <center>
+      <input type = "text" style = "margin-left:20%;" placeholder = "Location address" name = "location_address" />
+      </center>
 
-	    <div style = "max-width:470px;">
+      <div style = "max-width:470px;">
             <center> 
             
                <button style = "border:0px; background-color:#4285F4; margin-top:8%;
@@ -155,7 +62,114 @@
 </form>
 <div id="all_locations"></div>
 
+{% endblock %}
 
 
-</body>
-</html>
+{% block scripts %}
+ {{ block.super }}
+
+ <script src="https://ajax.aspnetcdn.com/ajax/jquery/jquery-1.9.0.js"></script>
+
+ <script type="text/javascript" charset="utf-8" async defer>
+
+  function confirm_booking(key) {
+    status = $('#'+key).find('.dd').val();
+    $.ajax({
+      url: "/get_locations_provider/confirm_reservation",
+      type: "GET",
+      data: {key: key, status: status},
+      success: function(data) {
+        $('#' + key).find('div.status').html("Status: " + status);    
+      }
+    })
+  }
+
+  function get_reservation_form(key, data) {
+    var html = '<form id="' + key + '" action="javascript:confirm_booking(\'' + key + '\')"> \
+         <div class="location_name"> Location: ' + data["location"] + '</div> \
+         <div class="username"> Client: ' + data["username"] + ' </div> \
+         <div class="comment"> Comment:' + data["comment"] +' </div> \
+         <div class="status"> Status:' + data["status"] +' </div> \
+         </div> \
+         <div style = "max-width:470px;"> \
+            <center> \
+              <div style = "max-width:470px;"> \
+            <center> \
+               <select class="dd" name="status"> \
+                  <option value="approved">approved</option>\
+                  <option value="declined">declined</option>\
+               </select>\
+            </center>\
+         </div>\
+               <button style = "border:0px; background-color:#4285F4; margin-top:8%;\
+                  height:35px; width:80%;margin-left:19%;" type = "submit">\
+                  <strong>CONFIRM</strong>\
+               </button>\
+            </center>\
+         </div>\
+      </form><div id="' + name + '"> </div>';
+      return html;
+  }
+
+  function see_bookings(name) {
+
+    $.ajax({
+        url:"/get_locations_provider/get_reservations",
+        type: "GET",
+        data: {name: name},
+        success:function(data){
+          if (jQuery.isEmptyObject(data)) {
+              $('#' + name).append("No reservations for this location.");
+          }
+          for (var key in data) {
+          html = get_reservation_form(key, data[key])
+          $('#' + name).append(html);
+        }
+        },
+      });
+
+  }
+
+  function get_location_form(name, info) {
+
+    var html = '<form action="javascript:see_bookings(\'' + name + '\')"> \
+         <div class="location_name"> Location: ' + name + '</div> \
+         <div class="location_type"> Type: ' + info["type"] + ' </div> \
+         <div class="location_address"> Address:' + info["address"] +' </div> \
+         </div> \
+         <div style = "max-width:470px;"> \
+            <center> \
+               <button style = "border:0px; background-color:#4285F4; margin-top:8%;\
+                  height:35px; width:80%;margin-left:19%;" type = "submit">\
+                  <strong>SEE BOOKINGS</strong>\
+               </button>\
+            </center>\
+         </div>\
+      </form><div id="' + name + '"> </div>';
+      return html;
+  }
+
+
+  function get_locations() {
+    $.ajaxSetup({
+      async: true,
+      timeout: 10000
+    });
+    $.get('/get_locations_provider', function(data) {
+      $('#all_locations').html(" ");
+        if (jQuery.isEmptyObject(data)) {
+            $('#all_locations').html("No locations.");
+        }
+      for (var key in data) {
+        var type = data[key]["type"]
+        var address = data[key]["type"]
+        html = get_location_form(key, data[key])
+        //console.log(html);
+        $('#all_locations').append(html);
+      }
+    });
+  }
+
+  </script>
+
+{% endblock %}

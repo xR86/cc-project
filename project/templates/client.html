@@ -1,12 +1,62 @@
-<!DOCTYPE html>
-<html>
-<head>
-	<title></title>
-	<script src="https://ajax.aspnetcdn.com/ajax/jquery/jquery-1.9.0.js"></script>
-</head>
-<body>
+{% extends "base_bootstrap.html" %}
 
-<script type="text/javascript" charset="utf-8" async defer>
+{% block head %}
+ {{ block.super }}
+
+{% endblock %}
+
+{% block title %} <title>Client page</title> {% endblock %}
+
+{% block stylesheets %}
+ {{ block.super }}
+
+{% endblock %}
+
+
+{% block content %}
+
+<p>{{ message }}</p>
+<form name = "form" action = "javascript:get_locations()" 
+         method = "POST" >{% csrf_token %}
+         
+         <div style = "max-width:470px;">
+            <center> 
+            
+               <button style = "border:0px; background-color:#4285F4; margin-top:8%;
+                  height:35px; width:80%;margin-left:19%;" type = "submit" 
+                  value = "Get locations" >
+                  <strong>Get locations</strong>
+               </button>
+               
+            </center>
+         </div>
+</form>
+<div id="all_locations"></div>
+
+
+<form name = "form" action = "javascript:get_my_bookings()" >{% csrf_token %}
+         
+         <div style = "max-width:470px;">
+            <center> 
+            
+               <button style = "border:0px; background-color:#4285F4; margin-top:8%;
+                  height:35px; width:80%;margin-left:19%;" type = "submit" 
+                  value = "SEE MY BOOKINGS" >
+                  <strong>SEE MY BOOKINGS</strong>
+               </button>
+               
+            </center>
+         </div>
+</form>
+<div id="my_bookings"></div>
+
+{% endblock %}
+
+
+{% block scripts %}
+ {{ block.super }}
+ 
+ <script type="text/javascript" charset="utf-8" async defer>
 
 	function book_request(name) {
 		//nume local, comment
@@ -96,43 +146,6 @@
 		});
 	}
 
-</script>
-<p>{{ message }}</p>
-<form name = "form" action = "javascript:get_locations()" 
-         method = "POST" >{% csrf_token %}
-         
-         <div style = "max-width:470px;">
-            <center> 
-            
-               <button style = "border:0px; background-color:#4285F4; margin-top:8%;
-                  height:35px; width:80%;margin-left:19%;" type = "submit" 
-                  value = "Get locations" >
-                  <strong>Get locations</strong>
-               </button>
-               
-            </center>
-         </div>
-</form>
-<div id="all_locations"></div>
+	</script>
 
-
-<form name = "form" action = "javascript:get_my_bookings()" >{% csrf_token %}
-         
-         <div style = "max-width:470px;">
-            <center> 
-            
-               <button style = "border:0px; background-color:#4285F4; margin-top:8%;
-                  height:35px; width:80%;margin-left:19%;" type = "submit" 
-                  value = "SEE MY BOOKINGS" >
-                  <strong>SEE MY BOOKINGS</strong>
-               </button>
-               
-            </center>
-         </div>
-</form>
-<div id="my_bookings"></div>
-      
-
-
-</body>
-</html>
+{% endblock %}
