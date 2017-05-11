@@ -73,7 +73,7 @@
 
 	function book_request(name) {
 		//nume local, comment
-	    comment = $('#' + name).find('input.comment').val();
+	    comment = $('#' + name).find('input#comment').val();
 	    console.log(comment);
 	    console.log(name);
 
@@ -82,7 +82,7 @@
 			type: "GET",
 			data: {name: name, comment: comment},
 			success: function(data) {
-				$('#' + name).find('input.comment').val("").attr('placeholder', 'add comments');
+				$('#' + name).find('input#comment').val("").attr('placeholder', 'add comments');
 				$('#' + name).find('div.status').html("Your booking is pending.");
 			}
 		})
@@ -96,7 +96,7 @@
           </div> \
           <div class="status"></div>\
           <div style = "max-width:470px;"> \
-          <div style = "max-width:470px;"><input class= "comment form-control" type = "text"  placeholder = "add comments" name = "comment" /></div>\
+          <div style = "max-width:470px;"><input id="comment" class= "form-control" type = "text"  placeholder = "add comments" name = "comment" /></div>\
              <center> \
                 <button class="btn btn-raised btn-primary" type = "submit">\
                    <strong>BOOK</strong>\
