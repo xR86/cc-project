@@ -1,4 +1,13 @@
 # cc-project
+> BaaS - Booking as a Service
+
+We have made a small GAE app for the `Cloud Computing course` at `Faculty of Computer Science Iasi` (FII).
+
+`Page of the course` is available here: [profs.info.uaic.ro/~adria/teach/courses/CloudComputing/coursepractical-works.html](https://profs.info.uaic.ro/~adria/teach/courses/CloudComputing/coursepractical-works.html)
+
+This was `Homework [4]` (4th/5 homeworks, 1/2 projects), as found on the course page.
+
+---
 
 ### Install guide
 
